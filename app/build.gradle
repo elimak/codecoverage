@@ -8,7 +8,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.elimak.navigationdemo"
+        applicationId "com.elimak.codecoverage"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -40,6 +40,12 @@ def dagger2Version = '2.25.2'
 def nav_version = "2.2.0"
 def lifecycle_version = '2.2.0'
 def coroutineVersion = '1.3.2'
+def mockitoVersion = '2.21.0'
+def junitVersion = '4.12'
+def androidCoreTesting = '2.1.0'
+def androidKotlinCoreTesting = '1.2.0'
+def androidXJunitVersion = '1.1.1'
+def roboelectricVersion = '4.3.1'
 
 apply plugin: 'jacoco'
 
@@ -102,4 +108,22 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation 'androidx.room:room-runtime:2.2.3'
     annotationProcessor 'androidx.room:room-compiler:2.2.3'
+
+    // Test dependencies
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "androidx.arch.core:core-testing:$androidCoreTesting"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
+
+    // AndroidX Test - JVM testing
+    testImplementation "androidx.test:core-ktx:$androidKotlinCoreTesting"
+    testImplementation "androidx.test.ext:junit:$androidXJunitVersion"
+    testImplementation "org.robolectric:robolectric:$roboelectricVersion"
+
+    testImplementation group: 'com.nhaarman.mockitokotlin2', name: 'mockito-kotlin', version: '2.2.0'
+
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }

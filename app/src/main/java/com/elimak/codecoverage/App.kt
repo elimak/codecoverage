@@ -5,7 +5,7 @@ import com.elimak.codecoverage.di.ApplicationComponent
 import com.elimak.codecoverage.di.ApplicationModule
 import com.elimak.codecoverage.di.DaggerApplicationComponent
 
-class App: Application() {
+open class App: Application() {
     private lateinit var instance: App
 
     override fun onCreate() {
