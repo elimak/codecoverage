@@ -28,4 +28,11 @@ class LandingViewModelTest: BaseTest() {
         landingViewModel.text.value = "abcd"
         Assert.assertEquals(landingViewModel.text.value, "abcd")
     }
+
+    @Test
+    fun `secondText set and get text`() {
+        Assert.assertEquals(landingViewModel.secondText.value, "secondText")
+        landingViewModel.secondText.value = "abcd"
+        Assert.assertEquals(landingViewModel.secondText.value, "abcd")
+    }
 }
