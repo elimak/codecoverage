@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Tab Feed Page"
+        android:id="@+id/TabFeedPage"
+        android:icon="@drawable/bottom_nav_feed_selector"/>
+    <item android:title="Tab Discovery Page"
+        android:id="@+id/TabDiscoveryPage"
+        android:icon="@drawable/bottom_nav_discovery_selector"/>
+    <item android:title="HIDEEN"
+        android:id="@+id/Hidden"
+        android:enabled="false"
+        android:icon="@drawable/hidden"/>
+    <item android:title="Tab Notification Page"
+        android:id="@+id/TabNotificationPage"
+        android:icon="@drawable/bottom_nav_notification_selector"/>
+    <item android:title="Tab Profile Page"
+        android:id="@+id/TabProfilePage"
+        android:icon="@drawable/bottom_nav_profile_selector"/>
+</menu>

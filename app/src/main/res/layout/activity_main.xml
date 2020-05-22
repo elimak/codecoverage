@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="com.elimak.navigationdemo.repository.data.AppState" />
+        <variable
+            name="appState"
+            type="androidx.lifecycle.LiveData&lt;AppState&gt;" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.elimak.navigationtabsdemo.MainActivity">
+
+        <!--- Fake top Margin for the Nav fragment
+        because fragment do not support databindings -->
+        <FrameLayout
+            android:id="@+id/fakeMargin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{appState.toolBarBackgroundVisible ? View.VISIBLE : View.GONE}"/>
+
+        <!--- Nav HOST -->
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/navigationBarBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fakeMargin"
+            app:navGraph="@navigation/app_navigation" />
+
+        <!--- Wrapper for toolbar fragment
+            because fragment do not support databindings-->
+
+        <FrameLayout
+            android:visibility="@{appState.toolBarVisible ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout="@layout/fragment_toolbar">
+
+            <fragment
+                android:id="@+id/toolbarFrag"
+                android:name="com.elimak.navigationdemo.ui.components.toolbar.ToolBarFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height" />
+        </FrameLayout>
+
+        <!--- NavigationBar elements -->
+
+        <FrameLayout
+            android:id="@+id/navigationBarBackground"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#000000"
+            android:visibility="@{appState.navigationBarBackgroundVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/navigationBar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:visibility="@{appState.navigationBarVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                app:itemBackground="@drawable/hidden"
+                app:itemIconSize="56dp"
+                app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/bottom_menu" />
+        </FrameLayout>
+
+        <!--app:itemIconTint="@drawable/bottom_nav_colors"-->
+
+        <ImageView
+            android:id="@+id/camera"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:src="@drawable/ic_game_main"
+            android:visibility="@{appState.navigationBarVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/navigationBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/overlap"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/fragment"
+            app:layout_constraintTop_toTopOf="@+id/fakeMargin" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

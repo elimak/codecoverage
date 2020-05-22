@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.elimak.navigationdemo.ui.components.toolbar.ToolBarViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height">
+
+        <FrameLayout
+            android:visibility="@{viewModel.backgroundVisible ? View.VISIBLE : View.GONE}"
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#3F51B5"/>
+
+        <ImageView
+            android:id="@+id/leftIcon"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_more_dots"
+            app:imageRes="@{viewModel.toolBarState.leftIconRes}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{()->viewModel.onLeftIconClicked()}"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@{viewModel.toolBarState.title}"
+            android:textColor="@color/green"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.toolBarState.hasTitle() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/rightIcon"
+            app:layout_constraintStart_toEndOf="@+id/leftIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/rightIcon"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_main_small_logo"
+            app:imageRes="@{viewModel.toolBarState.rightIconRes}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{()->viewModel.onRightIconClicked()}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

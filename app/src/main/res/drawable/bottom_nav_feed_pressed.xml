@@ -1,0 +1,52 @@
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="56dp"
+    android:layout_height="56dp">
+
+    <item>
+        <shape android:shape="rectangle">
+            <size
+                android:width="56dp"
+                android:height="56dp"/>
+            <solid android:color="#00000000"/>
+        </shape>
+    </item>
+
+    <item android:left="10dp" android:right="0dp"  android:top="5dp" android:bottom="5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#88ffffff"/>
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <!-- invisible - helpers to position the icon -->
+
+    <item android:left="16dp" android:right="6dp"  android:top="11dp" android:bottom="11dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#00ffffff"/>
+        </shape>
+    </item>
+
+    <item android:left="16dp" android:right="6dp"  android:top="11dp" android:bottom="27dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#00ffffff"/>
+        </shape>
+    </item>
+
+    <!-- end -->
+
+    <!-- invisible - bottom bar selector -->
+
+    <item android:left="21dp" android:right="11dp"  android:top="44dp" android:bottom="10dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#001c99e5"/>
+        </shape>
+    </item>
+
+    <!-- end -->
+
+    <item android:left="21dp" android:right="11dp"  android:top="11dp" android:bottom="23dp"
+        android:adjustViewBounds="true"
+        android:drawable="@drawable/bottom_nav_feed_icon">
+    </item>
+</layer-list>

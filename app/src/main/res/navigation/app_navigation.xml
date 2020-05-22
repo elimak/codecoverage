@@ -1,0 +1,102 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/LandingPage">
+
+    <fragment
+        android:id="@+id/LandingPage"
+        android:name="com.elimak.navigationdemo.ui.landing.LandingPage"
+        android:label="Landing Page"
+        tools:layout="@layout/fragment_landingpage" >
+    </fragment>
+
+    <!-- screens accessible on top level : aka game / settings...-->
+
+    <fragment
+        android:id="@+id/GamePage"
+        android:name="com.elimak.navigationdemo.ui.game.GamePage"
+        android:label="Game Page"/>
+
+    <fragment
+        android:id="@+id/SettingsPage"
+        android:name="com.elimak.navigationdemo.ui.settings.SettingsPage"
+        android:label="Settings Page" />
+
+    <!-- tabs -->
+
+    <fragment
+        android:id="@+id/TabFeedPage"
+        android:name="com.elimak.navigationdemo.ui.tabs.feed.TabFeedPage"
+        android:label="Tab Feed Page" />
+
+    <fragment
+        android:id="@+id/TabDiscoveryPage"
+        android:name="com.elimak.navigationdemo.ui.tabs.discovery.TabDiscoveryPage"
+        android:label="Tab Discovery Page" >
+
+        <action
+            android:id="@+id/toTabDiscoveryNestedPage"
+            app:destination="@id/TabDiscoveryNestedPage" />
+
+        <argument
+            android:name="nested_step"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TabNotificationPage"
+        android:name="com.elimak.navigationdemo.ui.tabs.notification.TabNotificationPage"
+        android:label="Tab Notification Page" />
+
+    <fragment
+        android:id="@+id/TabProfilePage"
+        android:name="com.elimak.navigationdemo.ui.tabs.profile.TabProfilePage"
+        android:label="Tab Profile Page" />
+
+    <!-- Sub Pages of Tabs should be accessed via their tab fragment - Dont access via global or other Frag-->
+
+    <fragment
+        android:id="@+id/TabDiscoveryNestedPage"
+        android:name="com.elimak.navigationdemo.ui.tabs.discovery.nested.TabDiscoveryNestedPage"
+        android:label="Tab Discovery Nested Page" >
+
+        <argument
+            android:name="deeplinked"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+
+    <!-- global actions on tabs, will trigger navigation to a tab and light up its button nav -->
+
+    <action
+        android:id="@+id/toGlobalTabFeedPage"
+        app:destination="@id/TabFeedPage" />
+
+    <action
+        android:id="@+id/toGlobalTabNotificationPage"
+        app:destination="@id/TabNotificationPage" />
+
+    <action
+        android:id="@+id/toGlobalTabDiscoveryPage"
+        app:destination="@id/TabDiscoveryPage" />
+
+    <action
+        android:id="@+id/toGlobalTabProfilePage"
+        app:destination="@id/TabProfilePage" />
+
+    <!-- Global action on top level destinations -->
+
+    <action
+        android:id="@+id/toGlobalGame"
+        app:destination="@id/GamePage" />
+
+    <action
+        android:id="@+id/toGlobalSettingsPage"
+        app:destination="@id/SettingsPage"
+        app:launchSingleTop="true" />
+
+
+</navigation>
