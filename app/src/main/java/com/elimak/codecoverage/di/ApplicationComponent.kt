@@ -3,7 +3,7 @@ package com.elimak.codecoverage.di
 import android.content.Context
 import com.elimak.codecoverage.App
 import com.elimak.codecoverage.ui.landing.LandingPage
-import com.elimak.navigationtabsdemo.MainActivity
+import com.elimak.codecoverage.MainActivity
 
 import dagger.Component
 import javax.inject.Singleton

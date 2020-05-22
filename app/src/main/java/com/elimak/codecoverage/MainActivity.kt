@@ -1,4 +1,4 @@
-package com.elimak.navigationtabsdemo
+package com.elimak.codecoverage
 
 import android.content.res.Resources
 import android.os.Bundle
@@ -11,8 +11,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.elimak.codecoverage.App
-import com.elimak.codecoverage.R
 import com.elimak.codecoverage.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
